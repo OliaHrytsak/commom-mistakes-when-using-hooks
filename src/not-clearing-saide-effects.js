@@ -1,18 +1,43 @@
 import React, { useEffect, useState } from "react";
 
 function NotClearingSideEffects() {
-  //   const [timer, setTimer] = useState("");
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const timerId = setTimeout(() => {
-      console.log("timer works");
-    }, 1000);
-    // return () => clearTimeout(timerId);
-  });
+    
+    const websocket = new WebSocket("ws://localhost:8080");
+
+    websocket.onopen = () => {
+      setMessages((prevMessages) => [...prevMessages, "WebSocket connected"]);
+    };
+
+    websocket.onmessage = (event) => {
+      const receivedMessage = event.data;
+      
+      setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+    };
+
+    websocket.onclose = () => {
+      setMessages((prevMessages) => [...prevMessages, "WebSocket disconnected"]);
+    };
+
+    // Missing cleanup function!
+    // Without cleanup, WebSocket connection remains open even after the component unmounts.
+
+    // return () => {
+    //   console.log("WebSocket disconnected");
+    //   websocket.close();
+    // };
+  }, []);
 
   return (
     <div>
-      <p></p>
+      <h2>Connection Status:</h2>
+      <ul>
+        {messages.map((message, index) => (
+          <li key={index}>{message}</li>
+        ))}
+      </ul>
     </div>
   );
 }

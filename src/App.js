@@ -10,6 +10,8 @@ import OmittingDependencies from "./ommiting-dependencies";
 function App() {
   return (
     <div className="App">
+      <div>Common Mistakes When Using React Hooks</div>
+
       {/* <HookInsideConditionalStatement /> */}
       <div>------------------------------------------------------------</div>
       {/* <OverusingState /> */}

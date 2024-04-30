@@ -10,19 +10,19 @@ import OmittingDependencies from "./ommiting-dependencies";
 function App() {
   return (
     <div className="App">
-      <HookInsideConditionalStatement />
+      {/* <HookInsideConditionalStatement /> */}
       <div>------------------------------------------------------------</div>
-      <OverusingState />
+      {/* <OverusingState /> */}
       <div>------------------------------------------------------------</div>
-      <MutatingStateDirectly />
+      {/* <MutatingStateDirectly /> */}
       <div>------------------------------------------------------------</div>
-      <UsingStaleStateData />
+      {/* <UsingStaleStateData /> */}
       <div>------------------------------------------------------------</div>
-      <RunningUseEffectForEveryUpdate/>
+      {/* <RunningUseEffectForEveryUpdate/> */}
       <div>------------------------------------------------------------</div>
       {/* <NotClearingSideEffects/> */}
       <div>------------------------------------------------------------</div>
-      <OmittingDependencies message = {'Hello!'}/>
+      {/* <OmittingDependencies message = {'Hello!'}/> */}
     </div>
   );
 }

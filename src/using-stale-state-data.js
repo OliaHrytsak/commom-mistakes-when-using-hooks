@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 
+//This can occur when we directly reference the state variable in consecutive state updates.
+//Because state updates may be asynchronous, the state variable might not reflect
+//the latest value when it’s referenced in successive calls
+
 function UsingStaleStateData() {
   const [counter, setCounter] = useState(0);
 
   const handleClick = () => {
-    //each setCounter call is using the same stale value of counter
-    // setCounter(counter + 1);
-    // setCounter(counter + 1);
-    // setCounter(counter + 1);
+    //-----incorrect using-------------//
 
-    setCounter(prevCounter => prevCounter + 3)
+    // setCounter(counter + 3);
+
+    //-----correct using-------------//
+    setCounter((prevCounter) => prevCounter + 3);
   };
 
   return (

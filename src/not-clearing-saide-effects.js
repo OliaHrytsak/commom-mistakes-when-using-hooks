@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 
+//Side effects are operations that interact with the outside of a function scope, affecting the external environment. 
+//This could involve data fetching, subscriptions, manual DOM manipulations, and timers
+
+//Example with WebSocket connection (node websocket-server.js - to ctart Socket Server)
+
 function NotClearingSideEffects() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     
-    const websocket = new WebSocket("ws://localhost:8080");
+    const websocket = new WebSocket("ws://localhost:8081");
 
     websocket.onopen = () => {
       setMessages((prevMessages) => [...prevMessages, "WebSocket connected"]);

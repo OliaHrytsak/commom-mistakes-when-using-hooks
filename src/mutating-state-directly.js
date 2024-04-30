@@ -3,8 +3,15 @@ import React, { useState } from "react";
 function MutatingStateDirectly() {
   const [text, setText] = useState([]);
 
+  //Direct state mutation doesn’t immediately trigger a re-render, 
+  //causing a discrepancy between the displayed state and the actual state of the component
+
   const handleClick = () => {
-    // text.push("Do not mutate state directly!");
+
+  //--------incorrect using------------//
+    // text.push("Do not mutate state directly!"); 
+    
+  //--------correct using------------//  
     setText((prevState) => [...prevState, "Do not mutate state directly!"]);
   };
 
